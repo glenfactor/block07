@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure The Vault</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+
+            text-align: center;
+            font-size: xx-large;
+        }
+
+        h3 {
+
+            text-align: center;
+            clear: both;
+        }
+
+        .head_p {
+
+            text-align: center;
+        }
+
+        .brclear {
+            clear: both;
+
+        }
+
+        .quest_sec {
+            background-color: aliceblue;
+            border-radius: 10px;
+            width: 30%;
+            height: 30%;
+            padding: 10px;
+            margin: 10px;
+            /*display: inline-block;*/
+            float: left;
+        }
+
+        label {
+            font-size: smaller;
+        }
+
+        input {
+            border-width: 1px;
+            width: 30%;
+            height: 30%;
+            padding: 10px;
+            border-radius: 3px;
+            margin-top: 10px;
+            display: block;
+
+
+        }
+
+        .submitButton {
+            background-color: gainsboro;
+            border-radius: 6px;
+            border-width: 0px;
+            width: 30%;
+            height: 30%;
+            padding: 10px;
+
+            display: block;
+            margin: 0 auto;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- PSUEDO CODE -->
+    <!--    
+	1.	Create three questions to include three different arithmetic calculations.
+	2.	For each question, create variables for the calculations. e.g. const Joe = 20; const Bill = 20, const fishJoeBill = Joe + Bill; etc. 
+	3.	Include answers for the results to the empty fields for results.
+	4.	Set three sections for the questions
+	5.	Create fields for the specific answer
+	6.	Create a prompt if it is a wrong answer and reset the buttons and fields, or a dialog box for wrong answer.
+	7.	Create a prompt for right answer and create a greeting or a dialog box that congratulates and gives the code.
+	8.	User inputs the correct code in the field 
+	9.	User clicks the button to finish entering the code.
+
+    -->
+
+
+
+    <h1>Secure the Vault</h1>
+
+    <p class="head_p">You have received this message because you have been chosen to open an important vault. </p>
+
+    <div>
+        <section class="quest_sec">
+            <h2>Julia's Macaroons</h2>
+            <p>Julia made blue macaroons and orange macaroons. She set it in 2 boxes of 5 each. How many macaroons does
+                Julia have?</p>
+
+            <!--<label for=" ">Enter Lock Combination</label>
+            <input type="number" id=" " name=" " min="1" max="10">
+            <input type="submit" value="Submit" class=" " />-->
+
+        </section>
+        <section class="quest_sec">
+            <h2>Joe and Bill Fishing</h2>
+            <p>Joe and Bill went for a fishing trip. Joe caught 20 salmon and Bill caught 20 salmon. How many fish did
+                Joe
+                and Bill caught?</p>
+
+            <!--<label for=" ">Enter Lock Combination</label>
+            <input type="number" id=" " name=" " min="1" max="40">
+            <input type="submit" value="Submit" class=" " />-->
+
+        </section>
+
+        <section class="quest_sec">
+            <h2>Mario's Corn Harvest</h2>
+            <p>Mario is harvesting corn in the field. He got 50 pieces of corn and 11 of them are tossed out. How many
+                pieces of corn does Mario have? </p>
+
+            <!--<label for=" ">Enter Lock Combination</label>
+            <input type="number" id=" " name=" " min="1" max="39">
+            <input type="submit" value="Submit" class=" " />-->
+
+        </section>
+
+        <!-- <button>Answer</button>-->
+    </div>
+
+    <div>
+        <form id="myForm">
+
+            <section class="quest_sec">
+                <label for="number1">Julia's Macaroons</label>
+                <input type="number" id="macTotal" name="number1" min="1" max="10">
+            </section>
+            <section class="quest_sec">
+                <label for="number2">Joe and Bill Fishing</label>
+                <input type="number" id="fishTotal" name="number2" min="1" max="40">
+            </section>
+
+            <section class="quest_sec">
+                <label for="number3">Mario's Corn Harvest</label>
+                <input type="number" id="goodCorn" name="number3" min="1" max="39">
+            </section>
+
+            <input type="submit" value="Submit" class="submitButton">
+        </form>
+
+    </div>
+
+    <div id="output"></div>
+    <br class="brclear">
+
+    <h3></h3>
+
+    <script>
+
+        // Julia's Macaroons
+        const boxMac = 2;
+        const setMac = 5;
+        const macTotal = boxMac * setMac;
+        //console.log(macTotal);
+
+        // Joe and Bill Fishing
+        const fishJoe = 20;
+        const fishBill = 20;
+        const fishTotal = fishJoe + fishBill;
+        //console.log(fishTotal);
+
+        // Mario's Harvest
+        const allCorn = 50;
+        const badCorn = 11;
+        const goodCorn = allCorn - badCorn;
+        //console.log(goodCorn);
+
+        // For Calculation
+        const num1 = Number(document.getElementById("macTotal").value);
+        const num2 = Number(document.getElementById("fishTotal").value);
+        const num3 = Number(document.getElementById("goodCorn").value);
+
+
+        const form = document.getElementById("myForm");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            const macTotal = Number(document.getElementById("macTotal").value);
+            const fishTotal = Number(document.getElementById("fishTotal").value);
+            const goodCorn = Number(document.getElementById("goodCorn").value);
+
+            // Check if the answer is correct
+            if (macTotal === 10 && fishTotal === 40 && goodCorn === 39) {
+                // Display a success message
+                window.alert(`Congratulations!!! You have received this message because you have solved the code. ${macTotal} - ${fishTotal} - ${goodCorn}`);
+            } else {
+                // Display an error message
+                window.alert("Sorry, that is incorrect. Please try again.");
+            }
+            // Clear the form fields
+            form.reset();
+
+        });
+
+
+        // Change of Content Heading
+        /*const myHeading = document.querySelector("h1");
+        myHeading.textContent = "Secure the Vault";*/
+
+        // Message for Solving the Code
+        /*const myHeading2 = document.querySelector("h3");
+        myHeading2.textContent = "Congratulations!!! You have received this message because you have solved the code.";*/
+
+        // alert window
+        /*console.log();
+        alert("Congratulations!!! You have received this message because you have solved the code. Here is the secret combination" + " " + macTotal + " - " + fishTotal + " - " + goodCorn);*/
+
+
+    </script>
+</body>
+
+</html>
